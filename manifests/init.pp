@@ -8,7 +8,7 @@
 # https://github.com/tubemogul/puppet-aerospike/blob/master/README.markdown
 #
 class aerospike (
-  $version        = '3.7.2',
+  $version        = '3.9.0',
   $download_dir   = '/usr/local/src',
   $download_url   = undef,
   $remove_archive = false,
