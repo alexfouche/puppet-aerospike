@@ -42,16 +42,24 @@ class aerospike::install {
   # #######################################
   ensure_resource( 'user', $aerospike::system_user, {
       ensure  => present,
-      uid     => $aerospike::system_uid,
+      uid     => ($aerospike::system_uid >= 0) ? {
+                    true    => $aerospike::system_uid,
+                    false   => undef,
+                  },
       gid     => $aerospike::system_group,
-      shell   => '/bin/bash',
+      system  => true,
+      shell   => '/bin/false',
       require => Group[$aerospike::system_group],
     }
   )
 
   ensure_resource('group', $aerospike::system_group, {
-      ensure => present,
-      gid    => $aerospike::system_gid,
+      ensure  => present,
+      gid     => ($aerospike::system_gid >= 0) ? {
+                    true    => $aerospike::system_gid,
+                    false   => undef,
+                  },
+      system  => true,
     }
   )
 
