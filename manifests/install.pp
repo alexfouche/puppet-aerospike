@@ -63,6 +63,13 @@ class aerospike::install {
     }
   )
 
+  file { $aerospike::data_dirs:
+    ensure  => directory,
+    owner   => $aerospike::system_user,
+    group   => $aerospike::system_group,
+    mode    => '0750',
+  }
+
   file { $aerospike::logging_dirs:
     ensure  => directory,
     owner   => $aerospike::system_user,
