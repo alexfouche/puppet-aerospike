@@ -63,6 +63,18 @@ class aerospike::install {
     }
   )
 
+  file { $aerospike::logging_dirs:
+    ensure  => directory,
+    owner   => $aerospike::system_user,
+    # group   => defined(Group['logreader']) ? {
+    #             true  => 'logreader',
+    #             false => $aerospike::system_group,
+    #            },
+    group   => $aerospike::logging_dirs_group,
+    mode    => '0750',
+  }
+
+
   # #######################################
   # Installation of the management console
   # Only if asked for it.

@@ -20,6 +20,8 @@ class aerospike (
   $system_uid     = -1,
   $system_group   = 'aerospike',
   $system_gid     = -1,
+  $logging_dirs   = ['/var/log/aerospike'],
+  $logging_dirs_group= 'aerospike',
   $config_service = {
     'paxos-single-replica-limit'    => 1,
     'pidfile'                       => '/var/run/aerospike/asd.pid',
@@ -82,6 +84,7 @@ class aerospike (
     $target_os_tag,
     $system_user,
     $system_group,
+    $logging_dirs_group,
     $service_status,
     $amc_version,
     $amc_download_dir,
@@ -104,6 +107,9 @@ class aerospike (
     $config_sec,
     $config_xdr,
     $config_xdr_credentials,
+  )
+  validate_array(
+    $logging_dirs,
   )
   if ! is_integer($system_uid) { fail("invalid ${system_uid} provided") }
   if ! is_integer($system_gid) { fail("invalid ${system_gid} provided") }
