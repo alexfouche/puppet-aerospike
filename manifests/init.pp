@@ -13,7 +13,7 @@ class aerospike (
   $download_url   = undef,
   $remove_archive = false,
   $edition        = 'community',
-  $target_os_tag  = 'ubuntu14.04',
+  $target_os_tag  = 'ubuntu14.04',  # "el6", "el7", see http://www.aerospike.com/artifacts/aerospike-server-community/3.9.0/
   $download_user  = undef,
   $download_pass  = undef,
   $system_user    = 'aerospike',

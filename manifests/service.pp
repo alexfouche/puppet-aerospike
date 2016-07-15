@@ -9,7 +9,6 @@ class aerospike::service {
     ensure     => $aerospike::service_status,
     hasrestart => true,
     hasstatus  => true,
-    provider   => 'init',
   }
 
   if $aerospike::amc_manage_service {
@@ -17,7 +16,6 @@ class aerospike::service {
       ensure     => $aerospike::amc_service_status,
       hasrestart => true,
       hasstatus  => true,
-      provider   => 'init',
     }
   }
 }
