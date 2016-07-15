@@ -53,8 +53,8 @@ cluster {
   <%= k %> <%= v %>
 <% end -%>
 }
-<% end -%>
 
+<% end -%>
 <% scope.lookupvar('aerospike::config_ns').sort.each do |ns,cfg| -%>
 # namespace context: <%= ns %>
 namespace <%= ns %> {
@@ -70,8 +70,8 @@ namespace <%= ns %> {
 <%     end
     end -%>
 }
-<% end -%>
 
+<% end -%>
 <% unless scope.lookupvar('aerospike::config_sec').empty? -%>
 security {
 <% scope.lookupvar('aerospike::config_sec').sort.each do |item_k,item_v|
@@ -86,8 +86,8 @@ security {
 <%     end
     end -%>
 }
-<% end -%>
 
+<% end -%>
 <% unless scope.lookupvar('aerospike::config_xdr').empty? -%>
 xdr {
 <% scope.lookupvar('aerospike::config_xdr').sort.each do |item_k,item_v|
@@ -103,4 +103,3 @@ xdr {
     end -%>
 }
 <% end -%>
-
