@@ -81,6 +81,16 @@ class aerospike::install {
     mode    => '0750',
   }
 
+  if $aerospike::logrotate_manage_service {
+    file { '/etc/logrotate.d/aerospike':
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
+      content => template('aerospike/logrotate-aerospike.erb'),
+      notify  => undef,
+    }
+  }
+
 
   # #######################################
   # Installation of the management console

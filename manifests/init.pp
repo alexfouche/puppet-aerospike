@@ -23,6 +23,7 @@ class aerospike (
   $data_dirs      = [],  # eg: ['/data/aerospike']
   $logging_dirs   = [],  # eg: ['/var/log/aerospike']
   $logging_dirs_group= 'aerospike',
+  $logrotate_manage_service= false,
   $config_service = {
     'paxos-single-replica-limit'    => 1,
     'pidfile'                       => '/var/run/aerospike/asd.pid',
@@ -93,6 +94,7 @@ class aerospike (
   )
   validate_bool(
     $remove_archive,
+    $logrotate_manage_service,
     $amc_install,
     $amc_manage_service,
   )
