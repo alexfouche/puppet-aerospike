@@ -3,13 +3,15 @@
 #
 
 <%= scope.lookupvar('aerospike::logging_dirs').join("/*.log ") + "/*.log" %> {
-  compress
-  dateext
-  daily
-  rotate 31
-  copytruncate
-  delaycompress
-  notifempty
-  missingok
-  create 640 <%= scope.lookupvar('aerospike::system_user') %> <%= scope.lookupvar('aerospike::logging_dirs_group') %>
+    compress
+    dateext
+    daily
+    rotate 31
+    delaycompress
+    notifempty
+    missingok
+    create 640 <%= scope.lookupvar('aerospike::system_user') %> <%= scope.lookupvar('aerospike::logging_dirs_group') %>
+    postrotate
+        /bin/kill -HUP `cat /var/run/aerospike/asd.pid`
+    endscript
 }
