@@ -81,6 +81,14 @@ class aerospike::install {
     mode    => '0750',
   }
 
+  file { '/var/run/aerospike':
+    ensure  => directory,
+    owner   => $aerospike::system_user,
+    # owner   => $aerospike::system_group,
+    group   => $aerospike::logging_dirs_group,
+    mode    => '0750',
+  }
+
   if $aerospike::logrotate_manage_service {
     file { '/etc/logrotate.d/aerospike':
       owner   => 'root',
