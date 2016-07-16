@@ -11,7 +11,9 @@
     notifempty
     missingok
     create 640 <%= scope.lookupvar('aerospike::system_user') %> <%= scope.lookupvar('aerospike::logging_dirs_group') %>
-    postrotate
-        /bin/kill -HUP `cat /var/run/aerospike/asd.pid`
-    endscript
+
+    copytruncate
+    # postrotate
+    #     /bin/kill -HUP `cat /var/run/aerospike/asd.pid`
+    # endscript
 }
