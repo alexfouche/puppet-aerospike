@@ -20,13 +20,6 @@ logging {
 <% end -%>
 }
 
-# mod lua definition
-mod-lua {
-<% scope.lookupvar('aerospike::config_mod_lua').sort.each do |k,v| -%>
-    <%= k %> <%= v %>
-<% end -%>
-}
-
 # network context definition
 network {
   service {

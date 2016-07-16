@@ -35,9 +35,6 @@ class aerospike (
     'address' => 'any',
     'port'    => 3000,
   },
-  $config_mod_lua = {
-    'cache-enabled' => 'false',
-  },
   $config_net_fab = {
     'address' => 'any',
     'port'    => 3001,
