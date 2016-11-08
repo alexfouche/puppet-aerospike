@@ -46,7 +46,13 @@ network {
 
   heartbeat {
 <% scope.lookupvar('aerospike::config_net_hb').sort.each do |k,v| -%>
+<% if v.kind_of?(Array) -%>
+<% v.each do |item| -%>
+    <%= k %> <%= item %>
+<% end -%>
+<% else -%>
     <%= k %> <%= v %>
+<% end -%>
 <% end -%>
   }
 }
